@@ -11,16 +11,19 @@ using namespace std;
 
 namespace market {
 
-	class produce
-	{
-	public:
-		string name;
-		int qty;
-		double price;
-		produce(string name, int qty, float price);
-		~produce();
-	};
+class produce
+{
+public:
+	string name;
+	int qty;
+	double price;
+	produce(string name, int qty, float price);
+	//careful
+	produce() = default;
+	~produce();
+};
 
-	float getPrice(unordered_map<string, float> stock, string item, int quantity);
-	float applyDiscount(vector<produce> v, vector<string> dealItems);
+float getPrice(unordered_map<string, float> stock, string item, int quantity);
+float applyDiscount(vector<produce> v, vector<string> dealItems);
+
 }

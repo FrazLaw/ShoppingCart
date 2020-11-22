@@ -3,6 +3,7 @@
 #include <string>
 #include "logo_xpm.xpm"
 
+
 //event table
 wxBEGIN_EVENT_TABLE(cMain, wxFrame)
 	EVT_BUTTON(BUTTON_ENTER, OnAddButtonClicked)
@@ -85,11 +86,11 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Shopping Cart" , wxPoint(25,25), wx
 	m_totaltxt_display = new wxTextCtrl(this, wxID_ANY, "", wxPoint(total_txt_display+itemQtyWidth, button_start),
 		wxSize(itemQtyWidth + 35, 30), wxTE_READONLY);
 
+	//SBG bitmap
 	wxPNGHandler *handler = new wxPNGHandler;
 	wxImage::AddHandler(handler);
 	wxStaticBitmap *image;
 	image = new wxStaticBitmap(this, wxID_ANY, wxBitmap(logo_xpm, wxBITMAP_TYPE_XPM), wxPoint(458 - 2 * padding, padding), wxSize(142, 53));
-	//image = new wxStaticBitmap(this, wxID_ANY, wxBitmap("logo.PNG", wxBITMAP_TYPE_PNG), wxPoint(458- 2* padding, padding), wxSize(142, 53));
 	
 }
 
@@ -125,7 +126,9 @@ void cMain::OnAddButtonClicked(wxCommandEvent &evt)
 	m_basket_list->SetItem(item_index, 1, quantity);
 	m_basket_list->SetItem(item_index, 2, price);
 
+	//create object
 	market::produce p(str_input,qtyforconv,price2);
+
 	v.push_back(p);
 
 	evt.Skip();
@@ -133,6 +136,7 @@ void cMain::OnAddButtonClicked(wxCommandEvent &evt)
 
 void cMain::OnTotalButtonClicked(wxCommandEvent &evt)
 {
+	m_totaltxt_display->ChangeValue("");
 	float total = 0.00;
 	wxString sum;
 	float deductions = 0.00;

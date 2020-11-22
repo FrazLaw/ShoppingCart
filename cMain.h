@@ -4,7 +4,7 @@
 #include <wx/stc/stc.h>
 #include "wx/listctrl.h"
 
-
+//this header is used to set parameters for frames within main window
 class cMain : public wxFrame
 {
 public:

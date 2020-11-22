@@ -1,4 +1,5 @@
 #include "produce.h"
+#include <iostream>
 
 using namespace market;
 
@@ -32,11 +33,14 @@ float market::applyDiscount(vector<produce> v, vector<string> dealItems)
 
 	unordered_map<string, int> discMp;
 
-	for (int k = 0; k < len; k++)
+	//create map
+	for (int i = 0; i < len; i++)
 	{
-		discMp[v[k].name] += v[k].qty;
+		discMp[v[i].name] += v[i].qty;
 	}
-
+	/*cList inst;
+	discMp = inst.createMap();*/
+	
 	//iterator will iterate through the size of the vector, as will k
 	int k = 0;
 	float discount = 1.0 / 3.0;
@@ -53,7 +57,6 @@ float market::applyDiscount(vector<produce> v, vector<string> dealItems)
 		else if (it->second > 3)
 		{
 			int deduct = it->second % 3;
-			//wee bug here where i had v[k].qty instead of the actual quantity stored in the value of the node
 			conv = it->second - deduct;
 			deductions += conv * v[k].price * discount;
 		}
@@ -96,7 +99,7 @@ float market::applyDiscount(vector<produce> v, vector<string> dealItems)
 	if (dealApplicableFlag == 0)
 	{
 		deductions += result_Qty * result_Price;
-	}
-
+	} 
+	 
 	return deductions;
 }
