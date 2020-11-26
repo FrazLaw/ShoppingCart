@@ -10,4 +10,5 @@ The final version for my Shopping Cart program is titled "WindowsProject1.exe". 
 
 # Deal Items:
 Knife, Fork and Spoon are part of the 'buy set, get the cheapest item free' deal
+
 If you buy 3 of any item, you receive 1/3 off.
